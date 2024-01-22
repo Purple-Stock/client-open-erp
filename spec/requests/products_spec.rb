@@ -15,7 +15,7 @@ RSpec.describe 'Product', type: :request do
   end
 
   describe 'GET /product' do
-    context 'when category in blank' do
+    context 'when category is blank' do
       let!(:product) { FactoryBot.create(:product, account_id: account.id, category: nil) }
 
       it 'shows' do
