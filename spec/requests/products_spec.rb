@@ -1,6 +1,19 @@
 require 'rails_helper'
 
-RSpec.describe 'Product' do
+RSpec.describe 'Product', type: :request do
+  let!(:account) { create(:account) }
+  let(:valid_params) { { product: { name: FFaker.name } } }
+
+  before { sign_in account.user }
+
+  describe 'POST /product' do
+    it 'counts by 1' do
+      expect do
+        post products_path, params: valid_params
+      end.to change(Product, :count).by(1)
+    end
+  end
+
   describe 'GET /products_defer' do
     let!(:account) { create(:account) }
     let(:url) { '/products_defer' }
