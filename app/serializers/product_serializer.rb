@@ -16,7 +16,7 @@ class ProductSerializer
   end
 
   attribute :category do |object|
-    object.category.name
+    object.category.try(:name)
   end
 
   attribute :image_url do |object|
