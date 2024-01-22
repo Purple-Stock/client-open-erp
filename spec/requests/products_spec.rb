@@ -14,6 +14,15 @@ RSpec.describe 'Product', type: :request do
     end
   end
 
+  describe 'GET /product' do
+    it 'shows' do
+      product = FactoryBot.create(:product, account_id: account.id, category: nil)
+      get product_path(product)
+
+      expect(response).to be_successful
+    end
+  end
+
   describe 'GET /products_defer' do
     let!(:account) { create(:account) }
     let(:url) { '/products_defer' }
