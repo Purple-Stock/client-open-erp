@@ -15,11 +15,14 @@ RSpec.describe 'Product', type: :request do
   end
 
   describe 'GET /product' do
-    it 'shows' do
-      product = FactoryBot.create(:product, account_id: account.id, category: nil)
-      get product_path(product)
+    context 'when category in blank' do
+      let!(:product) { FactoryBot.create(:product, account_id: account.id, category: nil) }
 
-      expect(response).to be_successful
+      it 'shows' do
+        get product_path(product)
+
+        expect(response).to be_successful
+      end
     end
   end
 
