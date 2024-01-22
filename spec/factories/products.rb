@@ -9,8 +9,5 @@ FactoryBot.define do
     image { FactoryHelpers.upload_file('spec/support/images/sem_imagem.jpeg', 'image/jpeg', true) }
     price { rand(100..400) }
     active { true }
-
-    account_id { create(:account).id }
-    category_id { create(:category, account_id: account_id).id }
   end
 end
