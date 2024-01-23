@@ -27,6 +27,10 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 16.18.1
+      - name: Install and Activate Yarn
+        run: |
+          npm install -g yarn
+          yarn set version 1.22.19
       - name: Run the default task
         env:
           PGHOST: localhost
