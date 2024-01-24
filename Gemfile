@@ -4,6 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.0.0'
 
 gem 'factory_bot_rails'
+gem 'ffaker'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.4', '>= 6.0.4.8'
 # Use postgresql as the database for Active Record
@@ -36,7 +37,6 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'pry-byebug'
   gem 'rspec-rails'
-  gem 'ffaker'
   gem 'solargraph'
 end
 
