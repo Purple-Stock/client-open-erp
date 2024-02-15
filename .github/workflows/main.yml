@@ -23,6 +23,14 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.0.0
+      - name: Set up Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.18.1
+      - name: Install and Activate Yarn
+        run: |
+          npm install -g yarn
+          yarn set version 1.22.19
       - name: Run the default task
         env:
           PGHOST: localhost
@@ -33,6 +41,7 @@ jobs:
           sudo apt-get -yqq install libpq-dev
           gem install bundler -v 2.2.29
           bundle install
+          cp config/database.yml.sample config/database.yml
           bundle exec rails db:create
           bundle exec rails db:migrate
           bundle exec rails db:seed
